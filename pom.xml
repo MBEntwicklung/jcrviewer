@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.mbentwicklung.jcrviewer</groupId>
 	<artifactId>jcrviewer-project</artifactId>
-	<version>0.0.1-TEST</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>JcrViewer</name>
 	<description>Viewer für ein JCR Repository</description>
