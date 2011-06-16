@@ -1,0 +1,30 @@
+----------------------------------------------------------------
+2011-06-15 20:02:23.244 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-0130-94e5-c100-000002f23af8
+on database directory /home/marc/workspaces/jcrviewer/jcrviewer-project/jcrviewer-swing/repository/version/db  
+
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+2011-06-15 20:02:23.898 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance 888c4022-0130-94e5-c100-000002f23af8
+on database directory /home/marc/workspaces/jcrviewer/jcrviewer-project/jcrviewer-swing/repository/workspaces/default/db  
+
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+2011-06-15 20:02:24.781 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance e1734037-0130-94e5-c100-000002f23af8
+on database directory /home/marc/workspaces/jcrviewer/jcrviewer-project/jcrviewer-swing/repository/workspaces/security/db  
+
+Database Class Loader started - derby.database.classpath=''
+
+2011-06-15 20:02:25.981 GMT:
+Shutting down instance 888c4022-0130-94e5-c100-000002f23af8
+----------------------------------------------------------------
+
+2011-06-15 20:02:26.030 GMT:
+Shutting down instance e1734037-0130-94e5-c100-000002f23af8
+----------------------------------------------------------------
+
+2011-06-15 20:02:26.041 GMT:
+Shutting down instance a816c00e-0130-94e5-c100-000002f23af8
+----------------------------------------------------------------

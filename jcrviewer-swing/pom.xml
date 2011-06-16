@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>jcrviewer-project</artifactId>
+		<groupId>de.mbentwicklung.jcrviewer</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>de.mbentwicklung.jcrviewer</groupId>
+	<artifactId>jcrviewer-swing</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Swing Oberfläche des JcrViewer</name>
+	<description>Grafische Oberfläche mit Swing</description>
+
+	<dependencies>
+		<!-- JcrViewer Core -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jcrviewer-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- Use Log4J for logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
+		<!-- jUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>de.mbentwicklung.jcrviewer.swing.JcrViewerTool</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

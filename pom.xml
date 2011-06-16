@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.mbentwicklung.jcrviewer</groupId>
+	<artifactId>jcrviewer-project</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>JcrViewer</name>
+	<description>Viewer für ein JCR Repository</description>
+	
+	<url>http://jcrviewer.mb-entwicklung.de</url>
+	<inceptionYear>2011</inceptionYear>
+	<organization>
+		<name>MBEntwicklung</name>
+		<url>http://www.mb-entwicklung.de</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<comments>
+				Copyright ${project.inceptionYear} ${project.organization.name}. 
+				Licensed under the Apache License, Version 2.0 (the "License");
+				you may not use this file except in compliance with the License.
+				You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+				Unless required by applicable law or agreed to in writing, software
+				distributed under the License is distributed on an "AS IS" BASIS,
+				WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+				See the License for the specific language governing permissions and
+				limitations under the License.
+			</comments>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>1</id>
+			<email>marc.bellmann@mb-entwicklung.de</email>
+			<name>Marc Bellmann</name>
+			<organization>MBEntwicklung</organization>
+			<organizationUrl>http://www.mb-entwicklung.de</organizationUrl>
+			<url>http://www.marc-bellmann.de</url>
+		</developer>
+	</developers>
+
+	<modules>
+		<module>jcrviewer-core</module>
+		<module>jcrviewer-swing</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<!-- The JCR API -->
+			<dependency>
+				<groupId>javax.jcr</groupId>
+				<artifactId>jcr</artifactId>
+				<version>2.0</version>
+			</dependency>
+
+			<!-- Jackrabbit content repository -->
+			<dependency>
+				<groupId>org.apache.jackrabbit</groupId>
+				<artifactId>jackrabbit-core</artifactId>
+				<version>2.2.4</version>
+			</dependency>
+
+			<!-- Use Log4J for logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+
+			<!-- jUnit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.2</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>de.mbentwicklung.jcrviewer.swing.JcrViewerTool</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
