@@ -89,9 +89,9 @@
 	<distributionManagement>
 		<!-- use the following if you're not using a snapshot version. -->
 		<repository>
-			<id>repo</id>
+			<id>jcrviewer</id>
 			<name>MBEntwicklung GitHub Repository</name>
-			<url>scp:git:https://MBEntwicklung@github.com/MBEntwicklung/jcrviewer.git</url>
+			<url>scp://MBEntwicklung@github.com/MBEntwicklung/jcrviewer.git</url>
 		</repository>
 	</distributionManagement>
 
