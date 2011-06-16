@@ -89,9 +89,9 @@
 	<distributionManagement>
 		<!-- use the following if you're not using a snapshot version. -->
 		<repository>
-			<id>jcrviewer</id>
+			<id>jcrviewer-github-site</id>
 			<name>MBEntwicklung GitHub Repository</name>
-			<url>gitsite://MBEntwicklung@github.com/MBEntwicklung/jcrviewer.git</url>
+			<url>git://github.com/MBEntwicklung/jcrviewer.git</url>
 		</repository>
 	</distributionManagement>
 
