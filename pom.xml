@@ -91,7 +91,7 @@
 		<repository>
 			<id>jcrviewer</id>
 			<name>MBEntwicklung GitHub Repository</name>
-			<url>scp://MBEntwicklung@github.com/MBEntwicklung/jcrviewer.git</url>
+			<url>gitsite://MBEntwicklung@github.com/MBEntwicklung/jcrviewer.git</url>
 		</repository>
 	</distributionManagement>
 
