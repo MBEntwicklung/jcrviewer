@@ -93,9 +93,22 @@
 			<name>MBEntwicklung FTP Repository</name>
 			<url>ftp://ftp.mb-entwicklung.de</url>
 		</repository>
+		<snapshotRepository>
+			<id>mbentwicklung-repository</id>
+			<name>MBEntwicklung FTP Repository</name>
+			<url>ftp://ftp.mb-entwicklung.de</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>1.0-beta-7</version>
+			</extension>
+		</extensions>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
