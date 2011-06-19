@@ -98,6 +98,14 @@
 			<name>MBEntwicklung FTP Repository</name>
 			<url>ftp://ftp.mb-entwicklung.de</url>
 		</snapshotRepository>
+		
+		<downloadUrl>ftp://ftp.mb-entwicklung.de</downloadUrl>
+		
+		<site>
+			<id>jcrviewer-site</id>
+			<name>JCR Viewer Site</name>
+			<url>ftp://ftp.mb-entwicklung.de</url>
+		</site>
 	</distributionManagement>
 
 	<build>
