@@ -108,6 +108,14 @@
 		</site>
 	</distributionManagement>
 
+	<repositories>
+		<repository>
+			<id>mbentwicklung-repository</id>
+			<name>Das MBEntwicklung Repository</name>
+			<url>ftp://ftp.mb-entwicklung.de</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<extensions>
 			<extension>
