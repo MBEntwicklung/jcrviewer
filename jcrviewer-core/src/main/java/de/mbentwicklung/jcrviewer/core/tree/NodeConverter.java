@@ -4,13 +4,14 @@ import javax.jcr.LoginException;
 import javax.jcr.NodeIterator;
 import javax.jcr.Property;
 import javax.jcr.PropertyIterator;
-import javax.jcr.PropertyType;
 import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.ValueFormatException;
+import javax.jcr.SimpleCredentials;
 
+import de.mbentwicklung.jcrviewer.core.converter.PropertyToStringConverter;
 import de.mbentwicklung.jcrviewer.core.repositories.RepositoryFactory;
+import de.mbentwicklung.jcrviewer.core.repositories.setups.Setup;
 
 /**
  * 
@@ -23,16 +24,19 @@ import de.mbentwicklung.jcrviewer.core.repositories.RepositoryFactory;
 public class NodeConverter {
 
 	private final Repository repository;
+	private final Setup setup;
 
-	public NodeConverter(final Repository repository) {
-		this.repository = repository;
+	public NodeConverter(final Setup setup) {
+		this.setup = setup;
+		this.repository = RepositoryFactory.createRepository(setup);
 	}
 
 	public Node toRootNode() {
 		Session session = null;
 		Node rootNode = null;
 		try {
-			session = repository.login(RepositoryFactory.DEFAULT_CREDENTIALS);
+			session = repository.login(new SimpleCredentials(setup
+					.getUsername(), setup.getPassword().toCharArray()));
 
 			rootNode = buildNode(session.getRootNode());
 
@@ -59,49 +63,9 @@ public class NodeConverter {
 		PropertyIterator propertyIterator = rootNode.getProperties();
 		while (propertyIterator.hasNext()) {
 			Property property = propertyIterator.nextProperty();
-			node.addAttribute(property.getName(), toString(property));
+			node.addAttribute(property.getName(),
+					new PropertyToStringConverter(property).toString());
 		}
 		return node;
-	}
-
-	private String toString(final Property property)
-			throws ValueFormatException, RepositoryException {
-
-		if (property.isMultiple()) {
-			return property.getValues().toString();
-		}
-		
-		switch (property.getType()) {
-
-		case PropertyType.BINARY:
-			return property.getBinary().getStream().toString();
-
-		case PropertyType.BOOLEAN:
-			return property.getBoolean() + "";
-
-		case PropertyType.DATE:
-			return property.getDate().toString();
-
-		case PropertyType.DECIMAL:
-			return property.getDecimal().toString();
-
-		case PropertyType.DOUBLE:
-			return property.getDouble() + "";
-
-		case PropertyType.LONG:
-			return property.getLong() + "";
-
-		case PropertyType.NAME:
-			return property.getName();
-
-		case PropertyType.PATH:
-			return property.getPath();
-
-		case PropertyType.STRING:
-			return property.getString();
-
-		default:
-			return "unknown Type";
-		}
 	}
 }

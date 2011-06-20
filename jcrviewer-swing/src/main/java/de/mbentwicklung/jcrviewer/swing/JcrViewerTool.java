@@ -3,10 +3,9 @@
  */
 package de.mbentwicklung.jcrviewer.swing;
 
-import de.mbentwicklung.jcrviewer.swing.components.JcrViewerWindow;
 
 /**
- * @author marc
+ * @author Marc Bellmann
  *
  */
 public class JcrViewerTool {
@@ -15,8 +14,7 @@ public class JcrViewerTool {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new JcrViewerWindow();
-
+		new RepositoryWindow();
 	}
 
 }
