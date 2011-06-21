@@ -84,4 +84,12 @@ public abstract class Setup {
 		this.password = password;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Setup [repositoryType=" + repositoryType + ", username="
+				+ username + ", password=" + password + "]";
+	}
 }

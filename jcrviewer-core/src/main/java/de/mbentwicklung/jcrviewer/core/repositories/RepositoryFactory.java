@@ -35,8 +35,8 @@ public class RepositoryFactory {
 						+ ", but Setup is " + setup.getClass());
 			}
 			JackrabbitSetup js = (JackrabbitSetup) setup;
-			repository = new TransientRepository(js.getRepositoryXmlPath(),
-					js.getRepositoryTmpPath());
+			repository = new TransientRepository(js.getRepositoryXmlFile(),
+					js.getRepositoryDirFile());
 			break;
 		default:
 			throw new NotImplementedException("Repository "

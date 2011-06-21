@@ -14,10 +14,10 @@ import de.mbentwicklung.jcrviewer.core.repositories.SupportedRepositorys;
 public class JackrabbitSetup extends Setup {
 
 	/** Path to repository.xml */
-	private File repositoryXmlPath;
+	private File repositoryXmlFile;
 
 	/** Path to repository dir */
-	private File repositoryTmpPath;
+	private File repositoryDirFile;
 
 	/**
 	 * 
@@ -29,47 +29,60 @@ public class JackrabbitSetup extends Setup {
 
 	/**
 	 * @param repositoryType
-	 * @param repositoryXmlPath
-	 * @param repositoryTmpPath
+	 * @param repositoryXmlFile
+	 * @param repositoryDirFile
 	 * @param username
 	 * @param password
 	 */
-	public JackrabbitSetup(File repositoryXmlPath, File repositoryTmpPath,
+	public JackrabbitSetup(File repositoryXmlFile, File repositoryDirFile,
 			String username, String password) {
 		super(SupportedRepositorys.JACKRABBIT, username, password);
 
-		this.repositoryXmlPath = repositoryXmlPath;
-		this.repositoryTmpPath = repositoryTmpPath;
+		this.repositoryXmlFile = repositoryXmlFile;
+		this.repositoryDirFile = repositoryDirFile;
 	}
 
 	/**
-	 * @return the repositoryXmlPath
+	 * @return the repositoryXmlFile
 	 */
-	public File getRepositoryXmlPath() {
-		return repositoryXmlPath;
+	public File getRepositoryXmlFile() {
+		return repositoryXmlFile;
 	}
 
 	/**
-	 * @param repositoryXmlPath
-	 *            the repositoryXmlPath to set
+	 * @param repositoryXmlFile
+	 *            the repositoryXmlFile to set
 	 */
-	public void setRepositoryXmlPath(File repositoryXmlPath) {
-		this.repositoryXmlPath = repositoryXmlPath;
+	public void setRepositoryXmlFile(File repositoryXmlFile) {
+		this.repositoryXmlFile = repositoryXmlFile;
 	}
 
 	/**
-	 * @return the repositoryTmpPath
+	 * @return the repositoryDirFile
 	 */
-	public File getRepositoryTmpPath() {
-		return repositoryTmpPath;
+	public File getRepositoryDirFile() {
+		return repositoryDirFile;
 	}
 
 	/**
-	 * @param repositoryTmpPath
-	 *            the repositoryTmpPath to set
+	 * @param repositoryDirFile
+	 *            the repositoryDirFile to set
 	 */
-	public void setRepositoryTmpPath(File repositoryTmpPath) {
-		this.repositoryTmpPath = repositoryTmpPath;
+	public void setRepositoryDirFile(File repositoryTmpFile) {
+		this.repositoryDirFile = repositoryTmpFile;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "JackrabbitSetup [repositoryXmlFile=" + repositoryXmlFile
+				+ ", repositoryDirFile=" + repositoryDirFile
+				+ ", repositoryType=" + repositoryType + ", username="
+				+ username + ", password=" + password + "]";
 	}
 
 }
