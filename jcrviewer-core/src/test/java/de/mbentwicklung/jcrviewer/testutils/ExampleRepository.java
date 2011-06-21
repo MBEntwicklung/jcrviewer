@@ -43,7 +43,8 @@ public class ExampleRepository {
 				Node node = session.getRootNode().addNode(
 						NODE_PATH + "/node" + i);
 
-				node.setProperty("String", "String");
+				node.setProperty("Irgendein key", "irgendein Value");
+				node.setProperty("String", "String zum Testen");
 				node.setProperty("id", i);
 			}
 			session.save();

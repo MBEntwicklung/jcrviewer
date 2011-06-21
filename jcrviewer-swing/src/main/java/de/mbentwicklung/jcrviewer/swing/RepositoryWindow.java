@@ -5,6 +5,7 @@ package de.mbentwicklung.jcrviewer.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -41,6 +42,7 @@ public class RepositoryWindow extends JFrame {
 		super("JcrViewer");
 
 		setExtendedState(Frame.MAXIMIZED_BOTH);
+		setPreferredSize(new Dimension(1000, 800));
 
 		pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		updateRepositoryPanel();
