@@ -1,8 +1,6 @@
 package de.mbentwicklung.jcrviewer.core.tree;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -15,8 +13,9 @@ import java.util.List;
  */
 public class Node implements Comparable<Node> {
 	private final Object node;
+	private Version baseVersion;
 	private final List<Node> children;
-	private final List<Attribute> attributes;
+	private final List<Version> versions;
 
 	/**
 	 * @param node
@@ -26,7 +25,7 @@ public class Node implements Comparable<Node> {
 		super();
 		this.node = node;
 		this.children = new ArrayList<Node>();
-		this.attributes = new ArrayList<Attribute>();
+		this.versions = new ArrayList<Version>();
 	}
 
 	public Object getNode() {
@@ -36,19 +35,33 @@ public class Node implements Comparable<Node> {
 	public void addChildNode(final Node node) {
 		children.add(node);
 	}
-	
+
 	public List<Node> getChildren() {
 		return children;
 	}
 	
-	public void addAttribute(final String name, final String value) {
-		attributes.add(new Attribute(name, value));
+	public void addVersion(final Version version) {
+		versions.add(version);
 	}
-	
-	public List<Attribute> getAttributes() {
-		return attributes;
+
+	public List<Version> getVersions() {
+		return versions;
 	}
-	
+
+	/**
+	 * @return the baseVersion
+	 */
+	public Version getBaseVersion() {
+		return baseVersion;
+	}
+
+	/**
+	 * @param baseVersion the baseVersion to set
+	 */
+	public void setBaseVersion(Version baseVersion) {
+		this.baseVersion = baseVersion;
+	}
+
 	@Override
 	public String toString() {
 		return node.toString();

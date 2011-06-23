@@ -21,7 +21,7 @@ import de.mbentwicklung.jcrviewer.core.repositories.setups.JackrabbitSetup;
 import de.mbentwicklung.jcrviewer.core.repositories.setups.Setup;
 
 /**
- * @author marc
+ * @author Marc Bellmann
  * 
  */
 @SuppressWarnings("serial")

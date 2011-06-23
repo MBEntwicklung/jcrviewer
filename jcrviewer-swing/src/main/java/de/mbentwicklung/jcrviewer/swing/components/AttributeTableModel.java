@@ -5,6 +5,7 @@ package de.mbentwicklung.jcrviewer.swing.components;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -16,7 +17,7 @@ import de.mbentwicklung.jcrviewer.core.tree.Attribute;
  */
 @SuppressWarnings("serial")
 public class AttributeTableModel extends AbstractTableModel {
-	private final ArrayList<Attribute> attributes;
+	private final List<Attribute> attributes;
 
 	/**
 	 * 
@@ -51,10 +52,9 @@ public class AttributeTableModel extends AbstractTableModel {
 
 	@Override
 	public String getColumnName(int column) {
-
 		switch (column) {
 		case 0:
-			return "Name";
+			return "Attribute - Name";
 		case 1:
 			return "Value";
 

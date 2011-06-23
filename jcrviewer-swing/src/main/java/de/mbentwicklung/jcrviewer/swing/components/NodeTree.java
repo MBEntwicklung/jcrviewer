@@ -22,35 +22,38 @@ import de.mbentwicklung.jcrviewer.core.tree.Node;
 @SuppressWarnings("serial")
 public class NodeTree extends JTree {
 
+	private final VersionTable versionTable;
 	private final AttributeTable attributeTable;
 
-	public NodeTree(final Node rootNode, final AttributeTable attributeTable) {
+	public NodeTree(final Node rootNode, final VersionTable versionTable,
+			final AttributeTable attributeTable) {
 		super(toMutableTreeNode(rootNode));
-		
+
+		this.versionTable = versionTable;
 		this.attributeTable = attributeTable;
-		
+
 		getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		addTreeSelectionListener();
 	}
-	
+
 	public void addTreeSelectionListener() {
 		super.addTreeSelectionListener(new TreeSelectionListener() {
-			
+
 			public void valueChanged(TreeSelectionEvent e) {
 				if (getLastSelectedPathComponent() instanceof DefaultMutableTreeNode) {
 					DefaultMutableTreeNode mutableTreeNode = (DefaultMutableTreeNode) getLastSelectedPathComponent();
 					if (mutableTreeNode.getUserObject() instanceof Node) {
 						Node node = (Node) mutableTreeNode.getUserObject();
-						attributeTable.updateTable(node);
+						versionTable.updateTable(node);
 					}
 				}
 			}
 		});
 	}
-	
+
 	private static MutableTreeNode toMutableTreeNode(final Node rootNode) {
-		DefaultMutableTreeNode tree = new DefaultMutableTreeNode(rootNode,
-				!rootNode.getChildren().isEmpty());
+		DefaultMutableTreeNode tree = new DefaultMutableTreeNode(rootNode, !rootNode.getChildren()
+				.isEmpty());
 
 		List<Node> childNodes = rootNode.getChildren();
 		Collections.sort(childNodes);

@@ -5,7 +5,7 @@ package de.mbentwicklung.jcrviewer.swing.components;
 
 import javax.swing.JTable;
 
-import de.mbentwicklung.jcrviewer.core.tree.Node;
+import de.mbentwicklung.jcrviewer.core.tree.Version;
 
 /**
  * @author Marc Bellmann
@@ -14,17 +14,14 @@ import de.mbentwicklung.jcrviewer.core.tree.Node;
 @SuppressWarnings("serial")
 public class AttributeTable extends JTable {
 
-	/**
-	 * @param nodeTree
-	 * 
-	 */
-	public AttributeTable(final Node node) {
+	public AttributeTable(final Version version) {
 		super();
 
-		updateTable(node);
+		updateTable(version);
 	}
 
-	public void updateTable(final Node node) {
-		this.setModel(new AttributeTableModel(node.getAttributes()));
+	public void updateTable(final Version version) {
+		this.setModel(new AttributeTableModel(version.getAttributes()));
 	}
+
 }

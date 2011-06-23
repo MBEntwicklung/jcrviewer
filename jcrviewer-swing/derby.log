@@ -1,60 +1,30 @@
 ----------------------------------------------------------------
-2011-06-21 21:03:13.747 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-0130-b403-9d04-000003209f18
+2011-06-23 20:35:51.861 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-0130-be37-474b-000002ba8948
 on database directory /tmp/repository/version/db  
 
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-2011-06-21 21:03:14.259 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance 888c4022-0130-b403-9d04-000003209f18
+2011-06-23 20:35:52.375 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance 888c4022-0130-be37-474b-000002ba8948
 on database directory /tmp/repository/workspaces/default/db  
 
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-2011-06-21 21:03:15.029 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance e1734037-0130-b403-9d04-000003209f18
+2011-06-23 20:35:53.165 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance e1734037-0130-be37-474b-000002ba8948
 on database directory /tmp/repository/workspaces/security/db  
 
 Database Class Loader started - derby.database.classpath=''
 
-2011-06-21 21:03:15.715 GMT:
-Shutting down instance 888c4022-0130-b403-9d04-000003209f18
+2011-06-23 20:35:56.773 GMT:
+Shutting down instance 888c4022-0130-be37-474b-000002ba8948
 ----------------------------------------------------------------
 
-2011-06-21 21:03:15.723 GMT:
-Shutting down instance e1734037-0130-b403-9d04-000003209f18
+2011-06-23 20:35:56.782 GMT:
+Shutting down instance e1734037-0130-be37-474b-000002ba8948
 ----------------------------------------------------------------
 
-2011-06-21 21:03:15.740 GMT:
-Shutting down instance a816c00e-0130-b403-9d04-000003209f18
-----------------------------------------------------------------
-----------------------------------------------------------------
-2011-06-21 21:07:07.657 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance c2db804d-0130-b403-9d04-000003209f18
-on database directory /tmp/repository/version/db  
-
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-2011-06-21 21:07:07.730 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance 848c0061-0130-b403-9d04-000003209f18
-on database directory /tmp/repository/workspaces/default/db  
-
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-2011-06-21 21:07:07.953 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance 46a08075-0130-b403-9d04-000003209f18
-on database directory /tmp/repository/workspaces/security/db  
-
-Database Class Loader started - derby.database.classpath=''
-
-2011-06-21 21:07:08.504 GMT:
-Shutting down instance 848c0061-0130-b403-9d04-000003209f18
-----------------------------------------------------------------
-
-2011-06-21 21:07:08.509 GMT:
-Shutting down instance 46a08075-0130-b403-9d04-000003209f18
-----------------------------------------------------------------
-
-2011-06-21 21:07:08.513 GMT:
-Shutting down instance c2db804d-0130-b403-9d04-000003209f18
+2011-06-23 20:35:56.787 GMT:
+Shutting down instance a816c00e-0130-be37-474b-000002ba8948
 ----------------------------------------------------------------

@@ -8,6 +8,10 @@ import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
+import javax.jcr.ValueFormatException;
+import javax.jcr.version.VersionHistory;
+import javax.jcr.version.VersionIterator;
+import javax.jcr.version.VersionManager;
 
 import de.mbentwicklung.jcrviewer.core.converter.PropertyToStringConverter;
 import de.mbentwicklung.jcrviewer.core.repositories.RepositoryFactory;
@@ -23,7 +27,9 @@ import de.mbentwicklung.jcrviewer.core.repositories.setups.Setup;
  */
 public class NodeConverter {
 
+	private static final String MIX_VERSION = "jcr:versionHistory";
 	private final Repository repository;
+	private Session session;
 	private final Setup setup;
 
 	public NodeConverter(final Setup setup) {
@@ -32,11 +38,10 @@ public class NodeConverter {
 	}
 
 	public Node toRootNode() {
-		Session session = null;
 		Node rootNode = null;
 		try {
-			session = repository.login(new SimpleCredentials(setup
-					.getUsername(), setup.getPassword().toCharArray()));
+			session = repository.login(new SimpleCredentials(setup.getUsername(), setup
+					.getPassword().toCharArray()));
 
 			rootNode = buildNode(session.getRootNode());
 
@@ -52,20 +57,46 @@ public class NodeConverter {
 		return rootNode;
 	}
 
-	private Node buildNode(javax.jcr.Node rootNode) throws RepositoryException {
-		Node node = new Node(rootNode.getPath());
+	private Node buildNode(javax.jcr.Node jcrNode) throws RepositoryException {
+		Node node = new Node(jcrNode.getPath());
 
-		NodeIterator iterator = rootNode.getNodes();
+		if (jcrNode.hasProperty(MIX_VERSION)) {
+			VersionManager versionManager = session.getWorkspace().getVersionManager();
+			VersionHistory versionHistory = versionManager.getVersionHistory(jcrNode.getPath());
+			VersionIterator versionIterator = versionHistory.getAllVersions();
+			while (versionIterator.hasNext()) {
+				javax.jcr.version.Version jcrVersion = versionIterator.nextVersion();
+
+				node.addVersion(buildVersion(jcrVersion));
+			}
+			node.setBaseVersion(buildVersion(versionManager.getBaseVersion(jcrNode.getPath())));
+		}
+		
+		Version version = buildVersion(jcrNode);
+		node.setBaseVersion(version);
+		node.addVersion(version);
+
+		NodeIterator iterator = jcrNode.getNodes();
 		while (iterator.hasNext()) {
 			node.addChildNode(buildNode(iterator.nextNode()));
 		}
 
-		PropertyIterator propertyIterator = rootNode.getProperties();
+		return node;
+	}
+
+	private Version buildVersion(javax.jcr.Node jcrNode) throws RepositoryException {
+		String created = "";
+		if (jcrNode instanceof javax.jcr.version.Version) {
+			created = ((javax.jcr.version.Version) jcrNode).getCreated().getTime().toString();
+		}
+		Version version = new Version(jcrNode.getName(), created);
+
+		PropertyIterator propertyIterator = jcrNode.getProperties();
 		while (propertyIterator.hasNext()) {
 			Property property = propertyIterator.nextProperty();
-			node.addAttribute(property.getName(),
+			version.addAttribute(property.getName(),
 					new PropertyToStringConverter(property).toString());
 		}
-		return node;
+		return version;
 	}
 }

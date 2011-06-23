@@ -4,10 +4,10 @@
 package de.mbentwicklung.jcrviewer.core.tree;
 
 /**
- * @author marc
+ * @author Marc Bellmann
  * 
  */
-public class Attribute {
+public class Attribute implements Comparable<Attribute> {
 
 	private final String name;
 	private final String value;
@@ -30,4 +30,8 @@ public class Attribute {
 		return value;
 	}
 
+	@Override
+	public int compareTo(Attribute attribute) {
+		return name.compareToIgnoreCase(attribute.name);
+	}
 }
