@@ -6,27 +6,47 @@ package de.mbentwicklung.jcrviewer.core.converter;
 import javax.jcr.Property;
 import javax.jcr.PropertyType;
 import javax.jcr.RepositoryException;
-import javax.jcr.ValueFormatException;
 
 /**
- * @author marc
- *
+ * Wandelt eine JCR {@link Property} in einen String um. Dieser String wird in der Anwendung
+ * ausgegeben.
+ * 
+ * @author Marc Bellmann <marc.bellmann@mb-entwicklung.de>
  */
-public class PropertyToStringConverter extends ToStringConverter {
+public class PropertyToStringConverter {
+
+	/** Umgewandelte Property */
+	private final String string;
 
 	/**
-	 * @param string
-	 * @throws RepositoryException 
-	 * @throws ValueFormatException 
+	 * Konstruktor zum Übergeben der Property und Umwandeln in den String
+	 * 
+	 * @param property
+	 *            Property
+	 * @throws RepositoryException
+	 *             JCR Exception
 	 */
-	public PropertyToStringConverter(final Property string) throws ValueFormatException, RepositoryException {
-		super(propertyToString(string));
+	public PropertyToStringConverter(final Property property) throws RepositoryException {
+		super();
+
+		string = propertyToString(property);
 	}
-	
 
-	private static String propertyToString(final Property property)
-			throws ValueFormatException, RepositoryException {
+	/**
+	 * Wandelt die Property in einen String um.
+	 * 
+	 * @param property
+	 *            {@link Property}
+	 * @return {@link String}
+	 * @throws RepositoryException
+	 *             JCR Exception
+	 */
+	private static String propertyToString(final Property property) throws RepositoryException {
 
+		if (property == null) {
+			throw new IllegalArgumentException("property is null");
+		}
+		
 		if (property.isMultiple()) {
 			return property.getValues().toString();
 		}
@@ -65,4 +85,12 @@ public class PropertyToStringConverter extends ToStringConverter {
 		}
 	}
 
+	/**
+	 * Gibt den umgewandelten String zurück
+	 * 
+	 * @return Property as String
+	 */
+	public String getString() {
+		return string;
+	}
 }

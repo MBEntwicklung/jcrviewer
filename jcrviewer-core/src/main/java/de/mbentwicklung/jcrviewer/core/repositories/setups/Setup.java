@@ -1,18 +1,18 @@
-/**
- * 
- */
 package de.mbentwicklung.jcrviewer.core.repositories.setups;
 
-import de.mbentwicklung.jcrviewer.core.repositories.SupportedRepositorys;
+import de.mbentwicklung.jcrviewer.core.repositories.SupportedRepositories;
 
 /**
- * @author Marc Bellmann
+ * Abstrakte Klasse für eine Repository Konfiguration. In dieser Klasse sind alle Notwendigen
+ * Informationen für ein JCR {@link javax.jcr.Repository Repository} hinterlegt. Für eine
+ * individuelle Implementierung muss diese Klasse erweitert werden.
  * 
+ * @author Marc Bellmann <marc.bellmann@mb-entwicklung.de>
  */
 public abstract class Setup {
 
 	/** Implementation of JCR */
-	protected SupportedRepositorys repositoryType;
+	protected SupportedRepositories repositoryType;
 
 	/** Username for repository */
 	protected String username;
@@ -27,12 +27,17 @@ public abstract class Setup {
 	}
 
 	/**
-	 * Konstruktor with sets
+	 * Konstruktor zum Setzen der Standard Informationen
 	 * 
 	 * @param repositoryType
+	 *            {@link #repositoryType}
+	 * @param username
+	 *            {@link #username}
+	 * @param password
+	 *            {@link #password}
 	 */
-	public Setup(SupportedRepositorys repositoryType, String username,
-			String password) {
+	public Setup(final SupportedRepositories repositoryType, final String username,
+			final String password) {
 		super();
 		this.repositoryType = repositoryType;
 		this.username = username;
@@ -40,21 +45,27 @@ public abstract class Setup {
 	}
 
 	/**
+	 * Getter für {@link #repositoryType}
+	 * 
 	 * @return the repositoryType
 	 */
-	public SupportedRepositorys getRepositoryType() {
+	public SupportedRepositories getRepositoryType() {
 		return repositoryType;
 	}
 
 	/**
+	 * Setter für {@link #repositoryType}
+	 * 
 	 * @param repositoryType
 	 *            the repositoryType to set
 	 */
-	public void setRepositoryType(SupportedRepositorys repositoryType) {
+	public void setRepositoryType(final SupportedRepositories repositoryType) {
 		this.repositoryType = repositoryType;
 	}
 
 	/**
+	 * Getter für {@link #username}
+	 * 
 	 * @return the username
 	 */
 	public String getUsername() {
@@ -62,14 +73,18 @@ public abstract class Setup {
 	}
 
 	/**
+	 * Setter für {@link #username}
+	 * 
 	 * @param username
 	 *            the username to set
 	 */
-	public void setUsername(String username) {
+	public void setUsername(final String username) {
 		this.username = username;
 	}
 
 	/**
+	 * Getter für {@link #password}
+	 * 
 	 * @return the password
 	 */
 	public String getPassword() {
@@ -77,19 +92,12 @@ public abstract class Setup {
 	}
 
 	/**
+	 * Setter für {@link #password}
+	 * 
 	 * @param password
 	 *            the password to set
 	 */
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = password;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Setup [repositoryType=" + repositoryType + ", username="
-				+ username + ", password=" + password + "]";
 	}
 }

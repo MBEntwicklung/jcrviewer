@@ -15,10 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
+import de.mbentwicklung.jcrviewer.core.converter.ConvertException;
+import de.mbentwicklung.jcrviewer.core.converter.RepositoryConverter;
+import de.mbentwicklung.jcrviewer.core.domains.Node;
+import de.mbentwicklung.jcrviewer.core.domains.Version;
 import de.mbentwicklung.jcrviewer.core.repositories.setups.Setup;
-import de.mbentwicklung.jcrviewer.core.tree.Node;
-import de.mbentwicklung.jcrviewer.core.tree.NodeConverter;
-import de.mbentwicklung.jcrviewer.core.tree.Version;
 import de.mbentwicklung.jcrviewer.swing.components.AttributeTable;
 import de.mbentwicklung.jcrviewer.swing.components.MenuPanel;
 import de.mbentwicklung.jcrviewer.swing.components.NodeTree;
@@ -78,8 +79,13 @@ public class RepositoryWindow extends JFrame {
 	private void updateRepositoryPanel() {
 
 		if (setup != null) {
-			NodeConverter nodeConverter = new NodeConverter(setup);
-			Node rootNode = nodeConverter.toRootNode();
+			RepositoryConverter nodeConverter = new RepositoryConverter(setup);
+			Node rootNode = null;
+			try {
+				rootNode = nodeConverter.buildRootNode();
+			} catch (ConvertException e) {
+				e.printStackTrace();
+			}
 			Version rootVersion = rootNode.getBaseVersion();
 			
 			attributeTable = new AttributeTable(rootVersion);

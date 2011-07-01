@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-import de.mbentwicklung.jcrviewer.core.repositories.SupportedRepositorys;
+import de.mbentwicklung.jcrviewer.core.repositories.SupportedRepositories;
 import de.mbentwicklung.jcrviewer.core.repositories.setups.JackrabbitSetup;
 import de.mbentwicklung.jcrviewer.core.repositories.setups.Setup;
 
@@ -72,7 +72,7 @@ public class MenuPanel extends JToolBar {
 	}
 
 	private void initRepositoryTypeComboBox() {
-		repositoryTypeComboBox.addItem(SupportedRepositorys.JACKRABBIT);
+		repositoryTypeComboBox.addItem(SupportedRepositories.JACKRABBIT);
 
 		add(repositoryTypeComboBox);
 	}

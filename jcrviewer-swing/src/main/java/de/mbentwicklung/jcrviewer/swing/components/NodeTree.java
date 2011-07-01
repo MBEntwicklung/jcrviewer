@@ -13,7 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
-import de.mbentwicklung.jcrviewer.core.tree.Node;
+import de.mbentwicklung.jcrviewer.core.domains.Node;
 
 /**
  * @author Marc Bellmann

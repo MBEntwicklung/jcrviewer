@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
-import de.mbentwicklung.jcrviewer.core.tree.Node;
+import de.mbentwicklung.jcrviewer.core.domains.Node;
 
 /**
  * @author Marc Bellmann

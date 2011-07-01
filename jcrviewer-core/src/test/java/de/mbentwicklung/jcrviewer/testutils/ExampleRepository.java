@@ -28,13 +28,12 @@ public class ExampleRepository {
 
 	private static final String NODE_PATH = "de/mbentwicklung/jcrviewer/testnodes";
 
+	public static final JackrabbitSetup JACKRABBIT_SETUP = new JackrabbitSetup(new File("/tmp/repository.xml"), new File("/tmp/repository/"), "default", "default");
+	
 	public static void main(String[] args) throws Exception {
 		Session session = null;
 		try {
-			JackrabbitSetup jackrabbitSetup = new JackrabbitSetup(new File("/tmp/repository.xml"),
-					new File("/tmp/repository/"), "default", "default");
-
-			Repository repository = RepositoryFactory.createRepository(jackrabbitSetup);
+			Repository repository = RepositoryFactory.createRepository(JACKRABBIT_SETUP);
 			session = repository.login(RepositoryFactory.DEFAULT_CREDENTIALS);
 			// versioningBasics(session.getRootNode(), session);
 			final Logger logger = LoggerFactory.getLogger(ExampleRepository.class);

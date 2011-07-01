@@ -5,7 +5,7 @@ package de.mbentwicklung.jcrviewer.swing.components;
 
 import javax.swing.JTable;
 
-import de.mbentwicklung.jcrviewer.core.tree.Version;
+import de.mbentwicklung.jcrviewer.core.domains.Version;
 
 /**
  * @author Marc Bellmann

@@ -9,7 +9,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import de.mbentwicklung.jcrviewer.core.tree.Attribute;
+import de.mbentwicklung.jcrviewer.core.domains.Attribute;
 
 /**
  * @author Marc Bellmann

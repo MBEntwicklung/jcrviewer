@@ -1,15 +1,13 @@
-/**
- * 
- */
 package de.mbentwicklung.jcrviewer.core.repositories.setups;
 
 import java.io.File;
 
-import de.mbentwicklung.jcrviewer.core.repositories.SupportedRepositorys;
+import de.mbentwicklung.jcrviewer.core.repositories.SupportedRepositories;
 
 /**
- * @author Marc Bellmann
+ * Setup Informationen für ein Jackrabbit Repository
  * 
+ * @author Marc Bellmann <marc.bellmann@mb-entwicklung.de>
  */
 public class JackrabbitSetup extends Setup {
 
@@ -20,29 +18,36 @@ public class JackrabbitSetup extends Setup {
 	private File repositoryDirFile;
 
 	/**
-	 * 
+	 * Default Konstruktor
 	 */
 	public JackrabbitSetup() {
 		super();
-		setRepositoryType(SupportedRepositorys.JACKRABBIT);
+		setRepositoryType(SupportedRepositories.JACKRABBIT);
 	}
 
 	/**
-	 * @param repositoryType
+	 * Konstruktor zum Setzen aller Informationen
+	 * 
 	 * @param repositoryXmlFile
+	 *            {@link #repositoryXmlFile}
 	 * @param repositoryDirFile
+	 *            {@link #repositoryDirFile}
 	 * @param username
+	 *            Username
 	 * @param password
+	 *            Password
 	 */
-	public JackrabbitSetup(File repositoryXmlFile, File repositoryDirFile,
-			String username, String password) {
-		super(SupportedRepositorys.JACKRABBIT, username, password);
+	public JackrabbitSetup(final File repositoryXmlFile, final File repositoryDirFile,
+			final String username, final String password) {
+		super(SupportedRepositories.JACKRABBIT, username, password);
 
 		this.repositoryXmlFile = repositoryXmlFile;
 		this.repositoryDirFile = repositoryDirFile;
 	}
 
 	/**
+	 * Getter for {@link #repositoryXmlFile}
+	 * 
 	 * @return the repositoryXmlFile
 	 */
 	public File getRepositoryXmlFile() {
@@ -50,14 +55,18 @@ public class JackrabbitSetup extends Setup {
 	}
 
 	/**
+	 * Setter for {@link #repositoryXmlFile}
+	 * 
 	 * @param repositoryXmlFile
 	 *            the repositoryXmlFile to set
 	 */
-	public void setRepositoryXmlFile(File repositoryXmlFile) {
+	public void setRepositoryXmlFile(final File repositoryXmlFile) {
 		this.repositoryXmlFile = repositoryXmlFile;
 	}
 
 	/**
+	 * Getter for {@link #repositoryDirFile}
+	 * 
 	 * @return the repositoryDirFile
 	 */
 	public File getRepositoryDirFile() {
@@ -65,24 +74,12 @@ public class JackrabbitSetup extends Setup {
 	}
 
 	/**
+	 * Setter for {@link #repositoryDirFile}
+	 * 
 	 * @param repositoryDirFile
 	 *            the repositoryDirFile to set
 	 */
-	public void setRepositoryDirFile(File repositoryTmpFile) {
-		this.repositoryDirFile = repositoryTmpFile;
+	public void setRepositoryDirFile(final File repositoryDirFile) {
+		this.repositoryDirFile = repositoryDirFile;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "JackrabbitSetup [repositoryXmlFile=" + repositoryXmlFile
-				+ ", repositoryDirFile=" + repositoryDirFile
-				+ ", repositoryType=" + repositoryType + ", username="
-				+ username + ", password=" + password + "]";
-	}
-
 }
