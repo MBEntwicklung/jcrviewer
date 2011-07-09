@@ -15,6 +15,7 @@ import de.mbentwicklung.jcrviewer.core.domains.Version;
  * @author Marc Bellmann
  * 
  */
+@SuppressWarnings("serial")
 public class VersionTableModel extends AbstractTableModel {
 
 	private final List<Version> versions;

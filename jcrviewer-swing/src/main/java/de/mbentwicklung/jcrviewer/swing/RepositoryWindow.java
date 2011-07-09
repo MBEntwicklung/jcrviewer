@@ -10,7 +10,6 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -90,7 +89,7 @@ public class RepositoryWindow extends JFrame {
 			
 			attributeTable = new AttributeTable(rootVersion);
 			versionTable = new VersionTable(rootNode, attributeTable);
-			nodeTree = new NodeTree(rootNode, versionTable, attributeTable);
+			nodeTree = new NodeTree(rootNode, versionTable);
 			informationPanel  = new JPanel(new GridLayout(2, 1));
 			
 			informationPanel.add(versionTable);

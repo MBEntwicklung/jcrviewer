@@ -46,10 +46,25 @@ public class RepositoryConverter {
 	 * 
 	 * @param setup
 	 *            Setup zum Initialisieren des {@link Repository}
+	 * @deprecated Bitte den zweiten Konstruktor verwenden
 	 */
+	@Deprecated
 	public RepositoryConverter(final Setup setup) {
 		this.setup = setup;
 		this.repository = RepositoryFactory.createRepository(setup);
+	}
+
+	/**
+	 * Konstruktor zum Umwandeln eines Repositories in die Anwendungs interne Datenstruktur
+	 * 
+	 * @param setup
+	 *            Setup mit Informationen zum Repository
+	 * @param repository
+	 *            Repository zum Auslesen der Informationen.
+	 */
+	public RepositoryConverter(final Setup setup, final Repository repository) {
+		this.setup = setup;
+		this.repository = repository;
 	}
 
 	/**
@@ -91,7 +106,8 @@ public class RepositoryConverter {
 	 * @param jcrNode
 	 *            Der JCR Node
 	 * @return Ein Anwendungs interner Node
-	 * @throws RepositoryException Fehler beim Umwandeln
+	 * @throws RepositoryException
+	 *             Fehler beim Umwandeln
 	 */
 	private Node buildNode(final javax.jcr.Node jcrNode) throws RepositoryException {
 		Node node = new Node(jcrNode.getPath());

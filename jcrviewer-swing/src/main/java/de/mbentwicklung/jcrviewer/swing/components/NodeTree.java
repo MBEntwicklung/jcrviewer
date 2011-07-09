@@ -23,14 +23,11 @@ import de.mbentwicklung.jcrviewer.core.domains.Node;
 public class NodeTree extends JTree {
 
 	private final VersionTable versionTable;
-	private final AttributeTable attributeTable;
 
-	public NodeTree(final Node rootNode, final VersionTable versionTable,
-			final AttributeTable attributeTable) {
+	public NodeTree(final Node rootNode, final VersionTable versionTable) {
 		super(toMutableTreeNode(rootNode));
 
 		this.versionTable = versionTable;
-		this.attributeTable = attributeTable;
 
 		getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		addTreeSelectionListener();
