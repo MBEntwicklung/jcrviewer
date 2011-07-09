@@ -89,6 +89,7 @@ public class RepositoryFactoryTest {
 		RepositoryFactory.createRepository(setup);
 	}
 
-	class IncorrectSetup extends Setup {
+	/** Nicht existierendes Setup zum Testen */
+	private class IncorrectSetup extends Setup {
 	}
 }

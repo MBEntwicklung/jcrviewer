@@ -3,6 +3,8 @@
  */
 package de.mbentwicklung.jcrviewer.core.converter;
 
+import java.util.Formatter;
+
 import javax.jcr.Property;
 import javax.jcr.PropertyType;
 import javax.jcr.RepositoryException;
@@ -46,7 +48,7 @@ public class PropertyToStringConverter {
 		if (property == null) {
 			throw new IllegalArgumentException("property is null");
 		}
-		
+
 		if (property.isMultiple()) {
 			return property.getValues().toString();
 		}
@@ -54,13 +56,15 @@ public class PropertyToStringConverter {
 		switch (property.getType()) {
 
 		case PropertyType.BINARY:
-			return property.getBinary().getStream().toString();
+			return "File";
 
 		case PropertyType.BOOLEAN:
 			return property.getBoolean() + "";
 
 		case PropertyType.DATE:
-			return property.getDate().toString();
+			Formatter formatter = new Formatter();
+			formatter.format("%tF", property.getDate());
+			return formatter.out().toString();
 
 		case PropertyType.DECIMAL:
 			return property.getDecimal().toString();

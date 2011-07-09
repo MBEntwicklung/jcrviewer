@@ -4,9 +4,9 @@
 package de.mbentwicklung.jcrviewer.core.converter;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javax.jcr.Binary;
 import javax.jcr.Property;
 import javax.jcr.PropertyType;
 
@@ -82,7 +82,7 @@ public class PropertyToStringConverterTest {
 	 */
 	@Test
 	public void testBinary() throws Exception {
-		final String string = "Test String";
+		final Binary binary = mockery.mock(Binary.class);
 		final Property property = mockery.mock(Property.class);
 
 		mockery.checking(new Expectations() {
@@ -93,8 +93,10 @@ public class PropertyToStringConverterTest {
 				oneOf(property).getType();
 				will(returnValue(PropertyType.BINARY));
 				
-				oneOf(property).getBinary();
-				will(returnValue(string));
+//				oneOf(property).getBinary();
+//				will(returnValue(binary));
+				
+				allowing(binary);
 			}
 		});
 
@@ -102,7 +104,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals("File", converter.getString());
 	}
 
 	/**
@@ -156,7 +158,7 @@ public class PropertyToStringConverterTest {
 				will(returnValue(PropertyType.DATE));
 				
 				oneOf(property).getDate();
-				will(returnValue(new GregorianCalendar(1988, 4, 27)));
+				will(returnValue(new GregorianCalendar(1988, 3, 27)));
 			}
 		});
 
