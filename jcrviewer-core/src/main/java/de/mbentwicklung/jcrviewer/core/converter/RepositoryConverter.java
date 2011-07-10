@@ -124,6 +124,7 @@ public class RepositoryConverter {
 			node.setBaseVersion(buildVersion(versionManager.getBaseVersion(jcrNode.getPath())));
 		} else {
 			Version version = buildVersion(jcrNode);
+			System.out.println(version);
 			node.setBaseVersion(version);
 			node.addVersion(version);
 		}

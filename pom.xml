@@ -49,10 +49,16 @@
 		<url>scm:git:https://MBEntwicklung@github.com/MBEntwicklung/jcrviewer.git</url>
 	</scm>
 
+	<issueManagement>
+		<system>Mantis</system>
+		<url>http://bugtracker.mb-entwicklung.de</url>
+	</issueManagement>
+
 	<modules>
 		<module>jcrviewer-core</module>
 		<module>jcrviewer-swing</module>
 	</modules>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- The JCR API -->
