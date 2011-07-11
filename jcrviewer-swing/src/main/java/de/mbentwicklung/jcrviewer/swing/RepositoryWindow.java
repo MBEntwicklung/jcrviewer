@@ -10,11 +10,12 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
-import de.mbentwicklung.jcrviewer.core.converter.ConvertException;
+import de.mbentwicklung.jcrviewer.core.JcrViewerException;
 import de.mbentwicklung.jcrviewer.core.converter.RepositoryConverter;
 import de.mbentwicklung.jcrviewer.core.domains.Node;
 import de.mbentwicklung.jcrviewer.core.domains.Version;
@@ -37,7 +38,6 @@ public class RepositoryWindow extends JFrame {
 	private VersionTable versionTable;
 	private final JSplitPane pane;
 	private JPanel informationPanel;
-
 
 	private Setup setup;
 
@@ -82,20 +82,22 @@ public class RepositoryWindow extends JFrame {
 			Node rootNode = null;
 			try {
 				rootNode = nodeConverter.buildRootNode();
-			} catch (ConvertException e) {
-				e.printStackTrace();
+
+				Version rootVersion = rootNode.getBaseVersion();
+
+				attributeTable = new AttributeTable(rootVersion);
+				versionTable = new VersionTable(rootNode, attributeTable);
+				nodeTree = new NodeTree(rootNode, versionTable);
+				informationPanel = new JPanel(new GridLayout(2, 1));
+
+				informationPanel.add(versionTable);
+				informationPanel.add(attributeTable);
+			} catch (final JcrViewerException e) {
+				JOptionPane.showMessageDialog(this, e.getErrorMessage(), e.getErrorTitle(),
+						JOptionPane.ERROR_MESSAGE);
 			}
-			Version rootVersion = rootNode.getBaseVersion();
-			
-			attributeTable = new AttributeTable(rootVersion);
-			versionTable = new VersionTable(rootNode, attributeTable);
-			nodeTree = new NodeTree(rootNode, versionTable);
-			informationPanel  = new JPanel(new GridLayout(2, 1));
-			
-			informationPanel.add(versionTable);
-			informationPanel.add(attributeTable);
 		}
-		
+
 		pane.setLeftComponent(new JScrollPane(nodeTree));
 		pane.setRightComponent(new JScrollPane(informationPanel));
 		pane.setResizeWeight(0.4);

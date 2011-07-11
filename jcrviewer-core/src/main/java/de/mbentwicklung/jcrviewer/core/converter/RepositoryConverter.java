@@ -12,6 +12,7 @@ import javax.jcr.version.VersionHistory;
 import javax.jcr.version.VersionIterator;
 import javax.jcr.version.VersionManager;
 
+import de.mbentwicklung.jcrviewer.core.configuration_error.DatabaseDriverNotFoundException;
 import de.mbentwicklung.jcrviewer.core.domains.Attribute;
 import de.mbentwicklung.jcrviewer.core.domains.Node;
 import de.mbentwicklung.jcrviewer.core.domains.Version;
@@ -75,8 +76,10 @@ public class RepositoryConverter {
 	 * @return Der Root Node
 	 * @throws ConvertException
 	 *             Fehler bei Umwandlung von Repository to Node
+	 * @throws DatabaseDriverNotFoundException
+	 *             Fehlender Datenbank Driver für laden des Repositories
 	 */
-	public Node buildRootNode() throws ConvertException {
+	public Node buildRootNode() throws ConvertException, DatabaseDriverNotFoundException {
 		Node rootNode = null;
 		try {
 			session = repository.login(new SimpleCredentials(setup.getUsername(), setup
@@ -87,6 +90,11 @@ public class RepositoryConverter {
 		} catch (LoginException e) {
 			throw new ConvertException("JCR Repository Login Error", e);
 		} catch (RepositoryException e) {
+			Throwable cause = e.getCause().getCause();
+			if (cause instanceof ClassNotFoundException) {
+				throw new DatabaseDriverNotFoundException(
+						((ClassNotFoundException) cause).getMessage(), e.getCause());
+			}
 			throw new ConvertException("JCR Repository Error", e);
 		} finally {
 			if (session != null)
