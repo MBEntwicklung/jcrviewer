@@ -3,11 +3,11 @@
 	<parent>
 		<artifactId>jcrviewer-project</artifactId>
 		<groupId>de.mbentwicklung.jcrviewer</groupId>
-		<version>0.0.4</version>
+		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<groupId>de.mbentwicklung.jcrviewer</groupId>
 	<artifactId>jcrviewer-swing</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>Swing Oberfläche des JcrViewer</name>
 	<description>Grafische Oberfläche mit Swing</description>
 
