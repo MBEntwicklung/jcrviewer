@@ -63,4 +63,5 @@ public class AttributeTableModel extends AbstractTableModel {
 					+ "] isn't correct!");
 		}
 	}
+	
 }

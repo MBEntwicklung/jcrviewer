@@ -12,6 +12,9 @@ import javax.jcr.version.VersionHistory;
 import javax.jcr.version.VersionIterator;
 import javax.jcr.version.VersionManager;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import de.mbentwicklung.jcrviewer.core.configuration_error.DatabaseDriverNotFoundException;
 import de.mbentwicklung.jcrviewer.core.domains.Attribute;
 import de.mbentwicklung.jcrviewer.core.domains.Node;
@@ -32,6 +35,9 @@ public class RepositoryConverter {
 	/** Erkennungsmerkmal eines Versionierten Nodes */
 	private static final String MIX_VERSION = "jcr:versionHistory";
 
+	/** Der Logger */
+	private final Logger logger = LoggerFactory.getLogger(RepositoryConverter.class);
+	
 	/** JCR Repository */
 	private final Repository repository;
 
@@ -129,17 +135,15 @@ public class RepositoryConverter {
 
 				node.addVersion(buildVersion(jcrVersion));
 			}
-			node.setBaseVersion(buildVersion(versionManager.getBaseVersion(jcrNode.getPath())));
-		} else {
-			Version version = buildVersion(jcrNode);
-			System.out.println(version);
-			node.setBaseVersion(version);
-			node.addVersion(version);
 		}
+		Version version = buildVersion(jcrNode);
+		node.setBaseVersion(version);
+		node.addVersion(version);
 
 		NodeIterator iterator = jcrNode.getNodes();
 		while (iterator.hasNext()) {
-			node.addChildNode(buildNode(iterator.nextNode()));
+			javax.jcr.Node nextNode = iterator.nextNode(); 
+			node.addChildNode(buildNode(nextNode));
 		}
 
 		return node;
@@ -158,6 +162,7 @@ public class RepositoryConverter {
 	 *             Fehler beim Umwandeln
 	 */
 	private Version buildVersion(final javax.jcr.Node jcrNode) throws RepositoryException {
+		logger.debug("build Version: " + jcrNode);
 		String created = "";
 		if (jcrNode instanceof javax.jcr.version.Version) {
 			created = ((javax.jcr.version.Version) jcrNode).getCreated().getTime().toString();
@@ -168,7 +173,7 @@ public class RepositoryConverter {
 		while (propertyIterator.hasNext()) {
 			Property property = propertyIterator.nextProperty();
 			Attribute attribute = new Attribute(property.getName(), new PropertyToStringConverter(
-					property).getString());
+					property).getValue());
 			version.addAttribute(attribute);
 		}
 		return version;

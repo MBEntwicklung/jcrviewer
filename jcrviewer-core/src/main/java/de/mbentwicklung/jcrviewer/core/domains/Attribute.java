@@ -19,7 +19,7 @@ public class Attribute implements Comparable<Attribute> {
 	private final String name;
 
 	/** Der Wert / Value des Attributes */
-	private final String value;
+	private final Object value;
 
 	/**
 	 * Konstruktor zum Setzen des Attributes.
@@ -29,7 +29,7 @@ public class Attribute implements Comparable<Attribute> {
 	 * @param value
 	 *            Wert / Value
 	 */
-	public Attribute(final String name, final String value) {
+	public Attribute(final String name, final Object value) {
 		super();
 		this.name = name;
 		this.value = value;
@@ -49,7 +49,7 @@ public class Attribute implements Comparable<Attribute> {
 	 * 
 	 * @return Wert / Value
 	 */
-	public String getValue() {
+	public Object getValue() {
 		return value;
 	}
 	

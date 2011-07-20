@@ -90,8 +90,8 @@ public class RepositoryWindow extends JFrame {
 				nodeTree = new NodeTree(rootNode, versionTable);
 				informationPanel = new JPanel(new GridLayout(2, 1));
 
-				informationPanel.add(versionTable);
-				informationPanel.add(attributeTable);
+				informationPanel.add(new JScrollPane(versionTable));
+				informationPanel.add(new JScrollPane(attributeTable));
 			} catch (final JcrViewerException e) {
 				JOptionPane.showMessageDialog(this, e.getErrorMessage(), e.getErrorTitle(),
 						JOptionPane.ERROR_MESSAGE);
@@ -99,7 +99,7 @@ public class RepositoryWindow extends JFrame {
 		}
 
 		pane.setLeftComponent(new JScrollPane(nodeTree));
-		pane.setRightComponent(new JScrollPane(informationPanel));
+		pane.setRightComponent(informationPanel);
 		pane.setResizeWeight(0.4);
 	}
 

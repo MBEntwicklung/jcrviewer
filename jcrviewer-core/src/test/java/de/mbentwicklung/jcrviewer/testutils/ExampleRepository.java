@@ -3,12 +3,16 @@
  */
 package de.mbentwicklung.jcrviewer.testutils;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import javax.jcr.Node;
 import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.ValueFactory;
 import javax.jcr.version.Version;
 import javax.jcr.version.VersionHistory;
 import javax.jcr.version.VersionIterator;
@@ -47,10 +51,19 @@ public class ExampleRepository {
 				Node node = session.getRootNode().addNode(NODE_PATH + "/node" + i,
 						"nt:unstructured");
 
+				InputStream is1 = new BufferedInputStream(new FileInputStream("test_import"));
+				InputStream is2 = new BufferedInputStream(new FileInputStream("pdf_test_import.pdf"));
+				InputStream is3 = new BufferedInputStream(new FileInputStream("png_test_import.png"));
+				ValueFactory valueFactory = session.getValueFactory();
+				
 				node.addMixin("mix:versionable");
 				node.setProperty("Irgendein key", "irgendein Value");
 				node.setProperty("String", "String zum Testen");
 				node.setProperty("id", i);
+				node.setProperty("file", valueFactory.createBinary(is1));
+				node.setProperty("pdf-file", valueFactory.createBinary(is2));
+				node.setProperty("jpg-file", valueFactory.createBinary(is3));
+				
 			}
 
 			session.save();

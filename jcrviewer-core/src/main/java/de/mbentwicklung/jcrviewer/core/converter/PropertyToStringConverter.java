@@ -18,7 +18,7 @@ import javax.jcr.RepositoryException;
 public class PropertyToStringConverter {
 
 	/** Umgewandelte Property */
-	private final String string;
+	private final Object value;
 
 	/**
 	 * Konstruktor zum Übergeben der Property und Umwandeln in den String
@@ -31,7 +31,7 @@ public class PropertyToStringConverter {
 	public PropertyToStringConverter(final Property property) throws RepositoryException {
 		super();
 
-		string = propertyToString(property);
+		value = propertyToString(property);
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class PropertyToStringConverter {
 	 * @throws RepositoryException
 	 *             JCR Exception
 	 */
-	private static String propertyToString(final Property property) throws RepositoryException {
+	private static Object propertyToString(final Property property) throws RepositoryException {
 
 		if (property == null) {
 			throw new IllegalArgumentException("property is null");
@@ -56,7 +56,7 @@ public class PropertyToStringConverter {
 		switch (property.getType()) {
 
 		case PropertyType.BINARY:
-			return "File";
+			return property.getBinary().getStream();
 
 		case PropertyType.BOOLEAN:
 			return property.getBoolean() + "";
@@ -94,7 +94,7 @@ public class PropertyToStringConverter {
 	 * 
 	 * @return Property as String
 	 */
-	public String getString() {
-		return string;
+	public Object getValue() {
+		return value;
 	}
 }

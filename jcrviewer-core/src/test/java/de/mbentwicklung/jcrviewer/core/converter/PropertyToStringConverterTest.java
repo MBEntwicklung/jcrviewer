@@ -71,7 +71,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals("File", converter.getString());
+		Assert.assertEquals("File", converter.getValue());
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -290,7 +290,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -321,7 +321,7 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 
 	/**
@@ -352,6 +352,6 @@ public class PropertyToStringConverterTest {
 
 		mockery.assertIsSatisfied();
 		
-		Assert.assertEquals(string, converter.getString());
+		Assert.assertEquals(string, converter.getValue());
 	}
 }
