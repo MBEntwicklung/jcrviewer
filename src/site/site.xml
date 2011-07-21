@@ -8,7 +8,7 @@
 			<item name="First Steps" href="usage.html" />
 			<item name="FAQ" href="faq.html" />
 		</menu>
-		<!-- <menu ref="reports" /> -->
+		<menu ref="reports" />
 
 		<links>
 			<item name="MBEntwicklung" href="http://www.mb-entwicklung.de" />
